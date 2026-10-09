@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet.repository; import java.util.List; import com.nextfeet.nextfeet.model.Usuario; public interface UsuarioDAO { Usuario buscarPorCorreo(String correo); Usuario obtener(Integer id); List<Usuario> listar(String rol); void crear(Usuario u); void actualizar(Usuario u); void cambiarEstado(Integer id,String estado); }

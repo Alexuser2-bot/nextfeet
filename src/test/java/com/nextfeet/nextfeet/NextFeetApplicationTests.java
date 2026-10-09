@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet; import org.junit.jupiter.api.Test; import org.springframework.boot.test.context.SpringBootTest; @SpringBootTest class NextFeetApplicationTests { @Test void contextLoads(){} }

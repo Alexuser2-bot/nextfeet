@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet.service; import java.util.List; import com.nextfeet.nextfeet.model.Usuario; public interface UsuarioService { Usuario login(String correo,String password); Usuario obtener(Integer id); List<Usuario> listar(String rol); void registrar(Usuario u); void actualizar(Usuario u); void desactivar(Integer id); }

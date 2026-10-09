@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet.repository; import java.util.*; import com.nextfeet.nextfeet.model.Oferta; public interface OfertaDAO {List<Oferta> listar(); void crear(Oferta o); void actualizar(Oferta o); void desactivar(Integer id);}

@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet.service; import java.util.*; import com.nextfeet.nextfeet.model.Pedido; public interface PedidoService {List<Pedido> listarPorUsuario(Integer id);List<Pedido> listarTodos();Pedido obtener(Integer id);Integer crear(Pedido p);void actualizarEstado(Integer id,String estado);void anular(Integer id,String motivo);}

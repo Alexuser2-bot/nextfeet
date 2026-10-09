@@ -1,0 +1,1 @@
+package com.nextfeet.nextfeet.service; import java.util.*; import com.nextfeet.nextfeet.model.Categoria; public interface CategoriaService {List<Categoria> listar(); Categoria obtener(Integer id); void crear(Categoria c); void actualizar(Categoria c); void desactivar(Integer id);}
