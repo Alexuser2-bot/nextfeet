@@ -1,1 +1,102 @@
-<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Producto</title><link rel="stylesheet" href="/css/nextfeet.css"></head><body><header><h1>NextFeet</h1><nav><a href="/home">Inicio</a><a href="/catalogo">Catálogo</a><a href="/ofertas">Ofertas</a><a href="#" onclick="abrirCarrito();return false">Carrito</a><c:choose><c:when test="${not empty sessionScope.usuario}"><a href="/perfil">Mi perfil</a><a href="/pedidos">Mis pedidos</a><a href="/logout">Salir</a></c:when><c:otherwise><a href="/login">Ingresar</a><a href="/registro">Registrarse</a></c:otherwise></c:choose></nav></header><main class="container"><div class="card"><a href="/catalogo" class="back-link">← Volver al catálogo</a><h2>Detalles del producto</h2><img class="shoe-photo product-photo" src="/images/productos/${zapatilla.id}.jpg" onerror="this.onerror=null;this.src='/images/zapatilla.svg'" alt="Imagen ilustrativa de zapatilla"><h1>${zapatilla.nombre}</h1><p>Marca: ${zapatilla.marca}</p><p>${zapatilla.descripcion}</p><p>Materiales: ${zapatilla.materiales}</p><p>Colores: ${zapatilla.colores}</p><p class="price">S/ ${zapatilla.precio}</p><form method="post" action="/carrito/agregar"><input type="hidden" name="zapatillaId" value="${zapatilla.id}"><label>Talla <select name="talla" required><option value="">Selecciona tu talla</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option></select></label><input name="cantidad" type="number" value="1" min="1"><button>Agregar al carrito</button></form><a href="/catalogo" class="back-link">← Seguir comprando</a></div></main><footer>NextFeet · E-commerce de zapatillas</footer><div class="cart-widget" id="cart-widget"><button type="button" class="cart-toggle" id="cart-toggle" aria-expanded="false" aria-controls="cart-panel">🛒 <span>Mi carrito</span> <span id="cart-arrow">▲</span></button><section id="cart-panel" class="cart-panel" hidden><div class="cart-heading"><strong>Tu carrito</strong><button type="button" id="cart-close" aria-label="Minimizar carrito">−</button></div><div id="cart-content">Cargando...</div></section></div><script src="/js/carrito-panel.js" defer></script></body></html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Producto</title>
+    <link rel="stylesheet" href="/css/nextfeet.css">
+</head>
+<body>
+    <header>
+        <h1>NextFeet</h1>
+        <nav>
+            <a href="/home">Inicio</a>
+            <a href="/catalogo">Catálogo</a>
+            <a href="/ofertas">Ofertas</a>
+            <a href="#" onclick="abrirCarrito();return false">Carrito</a>
+
+            <c:choose>
+                <c:when test="${not empty sessionScope.usuario}">
+                    <a href="/perfil">Mi perfil</a>
+                    <a href="/pedidos">Mis pedidos</a>
+                    <a href="/logout">Salir</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/login">Ingresar</a>
+                    <a href="/registro">Registrarse</a>
+                </c:otherwise>
+            </c:choose>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <a href="/catalogo" class="back-link">← Volver al catálogo</a>
+            <h2>Detalles del producto</h2>
+
+            <img class="shoe-photo product-photo"
+                 src="/images/productos/${zapatilla.id}.jpg"
+                 onerror="this.onerror=null;this.src='/images/zapatilla.svg'"
+                 alt="Imagen ilustrativa de zapatilla">
+
+            <h1>${zapatilla.nombre}</h1>
+            <p>Marca: ${zapatilla.marca}</p>
+            <p>${zapatilla.descripcion}</p>
+            <p>Materiales: ${zapatilla.materiales}</p>
+            <p>Colores: ${zapatilla.colores}</p>
+            <p class="price">S/ ${zapatilla.precio}</p>
+
+            <form method="post" action="/carrito/agregar">
+                <input type="hidden" name="zapatillaId" value="${zapatilla.id}">
+
+                <label>
+                    Talla
+                    <select name="talla" required>
+                        <option value="">Selecciona tu talla</option>
+                        <option>34</option>
+                        <option>35</option>
+                        <option>36</option>
+                        <option>37</option>
+                        <option>38</option>
+                        <option>39</option>
+                        <option>40</option>
+                        <option>41</option>
+                        <option>42</option>
+                        <option>43</option>
+                        <option>44</option>
+                    </select>
+                </label>
+
+                <input name="cantidad" type="number" value="1" min="1">
+
+                <button>Agregar al carrito</button>
+            </form>
+
+            <a href="/catalogo" class="back-link">← Seguir comprando</a>
+        </div>
+    </main>
+
+    <footer>NextFeet · E-commerce de zapatillas</footer>
+
+    <div class="cart-widget" id="cart-widget">
+        <button type="button"
+                class="cart-toggle"
+                id="cart-toggle"
+                aria-expanded="false"
+                aria-controls="cart-panel">
+            🛒 <span>Mi carrito</span> <span id="cart-arrow">▲</span>
+        </button>
+
+        <section id="cart-panel" class="cart-panel" hidden>
+            <div class="cart-heading">
+                <strong>Tu carrito</strong>
+                <button type="button" id="cart-close" aria-label="Minimizar carrito">−</button>
+            </div>
+            <div id="cart-content">Cargando...</div>
+        </section>
+    </div>
+
+    <script src="/js/carrito-panel.js" defer></script>
+</body>
+</html>
