@@ -145,11 +145,7 @@
 
     <div class="cart-widget" id="cart-widget">
         <button type="button"
-                class="cart-toggle"
-                id="cart-toggle"
-                aria-expanded="false"
-                aria-controls="cart-panel">
-            🛒 <span>Mi carrito</span> <span id="cart-arrow">▲</span>
+                class="cart-toggle" id="cart-toggle" aria-expanded="false" aria-controls="cart-panel"> 🛒 <span>Mi carrito</span> <span id="cart-arrow">▲</span>
         </button>
 
         <section id="cart-panel" class="cart-panel" hidden>
