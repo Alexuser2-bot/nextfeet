@@ -1,1 +1,77 @@
-<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Administradores</title><link rel="stylesheet" href="/css/nextfeet.css"></head><body><header><h1>NextFeet</h1><nav><a href="/home">Inicio</a><a href="/catalogo">Catálogo</a><a href="/ofertas">Ofertas</a><a href="/carrito">Carrito</a><c:choose><c:when test="${not empty sessionScope.usuario}"><a href="/perfil">Mi perfil</a><a href="/pedidos">Mis pedidos</a><a href="/logout">Salir</a></c:when><c:otherwise><a href="/login">Ingresar</a><a href="/registro">Registrarse</a></c:otherwise></c:choose></nav></header><main class="container"><h2>22 · Gestión de administradores</h2><div class="card"><h3>Crear administrador (I19)</h3><form method="post" action="/admin/administradores/crear"><input name="nombres" placeholder="Nombres"><input name="apellidos" placeholder="Apellidos"><input name="correo" placeholder="Correo"><input name="password" placeholder="Contraseña"><input name="telefono" placeholder="Teléfono"><button>Crear</button></form></div><table><tr><th>ID</th><th>Nombre</th><th>Correo</th><th>Estado</th><th></th></tr><c:forEach var="u" items="${usuarios}"><tr><td>${u.id}</td><td>${u.nombres} ${u.apellidos}</td><td>${u.correo}</td><td>${u.estado}</td><td><form method="post" action="/admin/administradores/desactivar"><input type="hidden" name="id" value="${u.id}"><button class="danger">Desactivar</button></form></td></tr></c:forEach></table></main><footer>NextFeet · E-commerce de zapatillas</footer></body></html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administradores</title>
+    <link rel="stylesheet" href="/css/nextfeet.css">
+</head>
+<body>
+    <header>
+        <h1>NextFeet</h1>
+        <nav>
+            <a href="/home">Inicio</a>
+            <a href="/catalogo">Catálogo</a>
+            <a href="/ofertas">Ofertas</a>
+            <a href="/carrito">Carrito</a>
+
+            <c:choose>
+                <c:when test="${not empty sessionScope.usuario}">
+                    <a href="/perfil">Mi perfil</a>
+                    <a href="/pedidos">Mis pedidos</a>
+                    <a href="/logout">Salir</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/login">Ingresar</a>
+                    <a href="/registro">Registrarse</a>
+                </c:otherwise>
+            </c:choose>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>22 · Gestión de administradores</h2>
+
+        <div class="card">
+            <h3>Crear administrador (I19)</h3>
+            <form method="post" action="/admin/administradores/crear">
+                <input name="nombres" placeholder="Nombres">
+                <input name="apellidos" placeholder="Apellidos">
+                <input name="correo" placeholder="Correo">
+                <input name="password" placeholder="Contraseña">
+                <input name="telefono" placeholder="Teléfono">
+
+                <button>Crear</button>
+            </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+
+            <c:forEach var="u" items="${usuarios}">
+                <tr>
+                    <td>${u.id}</td>
+                    <td>${u.nombres} ${u.apellidos}</td>
+                    <td>${u.correo}</td>
+                    <td>${u.estado}</td>
+                    <td>
+                        <form method="post" action="/admin/administradores/desactivar">
+                            <input type="hidden" name="id" value="${u.id}">
+                            <button class="danger">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </main>
+
+    <footer>NextFeet · E-commerce de zapatillas</footer>
+</body>
+</html>
