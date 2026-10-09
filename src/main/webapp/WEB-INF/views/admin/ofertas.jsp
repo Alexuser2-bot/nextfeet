@@ -1,1 +1,85 @@
-<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ofertas</title><link rel="stylesheet" href="/css/nextfeet.css"></head><body><header><h1>NextFeet</h1><nav><a href="/home">Inicio</a><a href="/catalogo">Catálogo</a><a href="/ofertas">Ofertas</a><a href="/carrito">Carrito</a><c:choose><c:when test="${not empty sessionScope.usuario}"><a href="/perfil">Mi perfil</a><a href="/pedidos">Mis pedidos</a><a href="/logout">Salir</a></c:when><c:otherwise><a href="/login">Ingresar</a><a href="/registro">Registrarse</a></c:otherwise></c:choose></nav></header><main class="container"><h2>38 · Gestión de ofertas</h2><div class="card"><form method="post" action="/admin/ofertas/crear"><input name="nombre" placeholder="Nombre campaña"><select name="tipo"><option>PORCENTAJE</option><option>MONTO</option></select><input name="valor" type="number" step="0.01" placeholder="Descuento"><input name="fechaInicio" type="date"><input name="fechaFin" type="date"><button>Guardar y asignar</button></form></div><table><tr><th>Nombre</th><th>Tipo</th><th>Valor</th><th>Inicio</th><th>Fin</th><th>Estado</th><th></th></tr><c:forEach var="o" items="${ofertas}"><tr><td>${o.nombre}</td><td>${o.tipo}</td><td>${o.valor}</td><td>${o.fechaInicio}</td><td>${o.fechaFin}</td><td>${o.estado}</td><td><form method="post" action="/admin/ofertas/desactivar"><input type="hidden" name="id" value="${o.id}"><button class="danger">Desactivar</button></form></td></tr></c:forEach></table></main><footer>NextFeet · E-commerce de zapatillas</footer></body></html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ofertas</title>
+    <link rel="stylesheet" href="/css/nextfeet.css">
+</head>
+<body>
+    <header>
+        <h1>NextFeet</h1>
+        <nav>
+            <a href="/home">Inicio</a>
+            <a href="/catalogo">Catálogo</a>
+            <a href="/ofertas">Ofertas</a>
+            <a href="/carrito">Carrito</a>
+
+            <c:choose>
+                <c:when test="${not empty sessionScope.usuario}">
+                    <a href="/perfil">Mi perfil</a>
+                    <a href="/pedidos">Mis pedidos</a>
+                    <a href="/logout">Salir</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/login">Ingresar</a>
+                    <a href="/registro">Registrarse</a>
+                </c:otherwise>
+            </c:choose>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>38 · Gestión de ofertas</h2>
+
+        <div class="card">
+            <form method="post" action="/admin/ofertas/crear">
+                <input name="nombre" placeholder="Nombre campaña">
+
+                <select name="tipo">
+                    <option>PORCENTAJE</option>
+                    <option>MONTO</option>
+                </select>
+
+                <input name="valor" type="number" step="0.01" placeholder="Descuento">
+                <input name="fechaInicio" type="date">
+                <input name="fechaFin" type="date">
+
+                <button>Guardar y asignar</button>
+            </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+
+            <c:forEach var="o" items="${ofertas}">
+                <tr>
+                    <td>${o.nombre}</td>
+                    <td>${o.tipo}</td>
+                    <td>${o.valor}</td>
+                    <td>${o.fechaInicio}</td>
+                    <td>${o.fechaFin}</td>
+                    <td>${o.estado}</td>
+                    <td>
+                        <form method="post" action="/admin/ofertas/desactivar">
+                            <input type="hidden" name="id" value="${o.id}">
+                            <button class="danger">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </main>
+
+    <footer>NextFeet · E-commerce de zapatillas</footer>
+</body>
+</html>
